@@ -28,7 +28,6 @@ namespace infini
         IT_ASSERT(this->ptr == nullptr);
         // pad the size to the multiple of alignment
         size = this->getAlignedSize(size);
-
         // =================================== 作业 ===================================
         // TODO: 设计一个算法来分配内存，返回起始地址偏移量
         // =================================== 作业 ===================================
@@ -62,13 +61,11 @@ namespace infini
         IT_ASSERT(this->ptr == nullptr);
         size = getAlignedSize(size);
 
-        // =================================== 作业 ===================================
-        // TODO: 设计一个算法来回收内存
-        // =================================== 作业 ===================================
         IT_ASSERT(used >= size);
         used -= size;
         addFreeBlock(addr, size);
     }
+
     std::map<size_t, size_t>::iterator Allocator::findFreeBlock(size_t size)
     {
         // first-fit: 找到第一个 size 足够的空闲块
