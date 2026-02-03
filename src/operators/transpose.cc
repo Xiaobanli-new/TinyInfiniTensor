@@ -9,10 +9,9 @@ namespace infini
         auto rank = input->getRank();
         if (permute.empty())
         {
+            transposePermute.resize(rank);
             for (size_t i = 0; i < rank; ++i)
-            {
-                transposePermute[i] = i;
-            }
+                transposePermute[i] = static_cast<int>(rank - 1 - i);
         }
         else
         {
@@ -26,7 +25,6 @@ namespace infini
     {
         const auto A = inputs[0];
         auto input_dim = A->getDims();
-
         // =================================== 作业 ===================================
         // TODO：修改 output_dim，返回正确的 transpose 后的 shape
         // REF: https://onnx.ai/onnx/operators/onnx__Transpose.html#transpose-21
